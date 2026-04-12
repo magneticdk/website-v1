@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1B4F72;
+  --secondary: #2E75B6;
+  --accent: #27AE60;
+  --background: #F5F7FA;
+  --card: #FFFFFF;
+  --destructive: #E74C3C;
+  --text: #333333;
+  --muted: #718096;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background-color: var(--background);
+}
