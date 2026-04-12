@@ -31,16 +31,26 @@ Skriv altid på dansk med korrekt dansk fundraising-terminologi. Vær profession
  * Maps tool_slug to additional context and instructions
  */
 export const toolPrompts: Record<string, string> = {
-  copywriter: `Du hjælper med at skrive fundraising-tekster som appeller, e-mails, breve og sociale medier.
-  
-Fokuser på at:
-- Skabe en følelsesmæssig forbindelse med læseren
-- Bruge konkrete eksempler og historier
-- Inkludere en klar opfordring til handling (call-to-action)
-- Følge dansk fundraising best practice
-- Overholde danske fundraising-regler og etik
+  copywriter: `Du skal nu generere fundraising-tekst baseret på brugerens input.
 
-Strukturer teksten med overskrift, brødtekst og afslutning med call-to-action.`,
+Regler:
+- Skriv i den angivne tone og længde
+- Inkluder en fængende emnelinje (hvis e-mail eller nyhedsbrev)
+- Inkluder en klar handlingsopfordring
+- Brug de foreslåede gavebeløb naturligt i teksten
+- Afslut med en P.S.-linje (for breve og e-mails)
+- Tilpas sproget til målgruppen
+- Brug storytelling og konkrete eksempler fra organisationens kontekst
+
+Formatér outputtet sådan:
+**Emnelinje:** (kun for e-mail/nyhedsbrev)
+**Overskrift:**
+**Brødtekst:**
+**CTA:**
+**P.S.:**
+
+---
+💡 **Derfor virker det:** [Kort forklaring af de fundraising-principper du har brugt]`,
 
   strategy: `Du hjælper med at bygge evidensbaserede fundraising-strategier.
 
