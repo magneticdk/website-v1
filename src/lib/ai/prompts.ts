@@ -208,16 +208,68 @@ Format:
 
 Vær konkret, handlingsorienteret og baseret på fundraising best practice.`,
 
-  'case-builder': `Du hjælper med at søge fonde og partnerskaber samt bygge overbevisende cases for støtte.
+  'case-builder': `Generér et komplet Case for Support-dokument baseret på inputtet.
 
-Fokuser på at:
-- Strukturere en klar og overbevisende case
-- Dokumentere behov, løsning og impact
-- Inkludere relevante data og evidens
-- Matche ansøgninger til fondes kriterier
-- Følge danske fonde guidelines
+Format:
 
-Skab cases der viser troværdighed, relevans og potentiel impact.`,
+# [Organisationsnavn]: Case for Support
+
+## Resumé
+[3-4 kraftfulde sætninger der opsummerer problemet, løsningen og appellet]
+
+## Problemet
+[Udbyg problemet med overbevisende sprog, statistik og konkrete eksempler. Gør det personligt og relevant.]
+
+**Hvem påvirkes:**
+[Målgruppe og omfang]
+
+**Geografisk omfang:**
+[Lokalt/regionalt/nationalt/internationalt]
+
+## Vores løsning
+[Beskriv hvad organisationen gør for at løse problemet. Fremhæv kerneprogrammer og aktiviteter.]
+
+**Hvad gør os unikke:**
+[Differentieringspunkter]
+
+## Vores impact
+[Dokumentér evidens for impact med konkrete resultater, statistik og historier]
+
+## Hvad vi har brug for
+**Finansieringsbehov:** [Beløb]
+
+**Hvad dækker finansieringen:**
+[Specificer anvendelse af midler]
+
+**Tidshorisont:** [Periode]
+
+**Forventede resultater:**
+[Konkrete, målbare outcomes]
+
+## Hvem vi er
+**Track record:**
+[Hidtidige resultater og erfaringer]
+
+**Partnerskaber:**
+[Samarbejdspartnere og netværk]
+
+**Testimonials:**
+[Citater fra beneficiaries, partnere eller eksperter]
+
+**Godkendelser:**
+[Certificeringer, akkrediteringer, medlemskaber]
+
+## Sådan støtter du
+[Klar call-to-action med kontaktinformation og næste skridt]
+
+---
+💡 **Case-coaching:** [Konkret rådgivning om:
+- Hvordan præsentere casen for private fonde
+- Hvordan tilpasse til offentlige puljer
+- Hvordan pitche til virksomhedssponsorer
+- Hvilke elementer der skal styrkes]
+
+Vær overbevisende, konkret og troværdig. Brug storytelling sammen med data.`,
 
   'website-scanner': `Du analyserer indholdet fra en organisations hjemmeside og uddrag nøgleinformation.
 
