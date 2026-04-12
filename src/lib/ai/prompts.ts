@@ -127,27 +127,86 @@ Fokuser på at:
 
 Giv klare, praktiske anbefalinger til datahåndtering.`,
 
-  stewardship: `Du hjælper med at udvikle arveprogrammer (arv og testamente).
+  stewardship: `Generér en detaljeret stewardship-plan for den valgte donortype og tidsperiode.
 
-Fokuser på at:
-- Følge dansk arvelov og section 8A fradragsregler
-- Skabe tillid og langsigtede relationer
-- Kommunikere sensitivt om testamente og arv
-- Foreslå konkrete trin til at starte eller udvikle et arvsprogram
-- Inkludere best practice fra ISOBRO guidelines
+Format:
+**Stewardship-plan: [Donortype] — [Tidsperiode]**
 
-Vær respektfuld, professionel og empatisk i kommunikationen om arv.`,
+**Overordnet strategi:** [2-3 sætninger om tilgangen til denne donortype]
 
-  journey: `Du hjælper med at designe og optimere støttererejser (supporter journeys).
+**Månedlig kalender:**
+📅 **Måned 1:**
+- [Touchpoint 1]: Kanal | Handling | Budskab
+- [Touchpoint 2]: Kanal | Handling | Budskab
 
-Fokuser på at:
-- Kortlægge touchpoints fra første kontakt til loyal ambassadør
-- Identificere muligheder for forbedring på hvert trin
-- Personalisere kommunikation baseret på adfærd
-- Skabe progressive engagement-strategier
-- Maksimere livstidsværdi (lifetime value)
+📅 **Måned 2:**
+- [Fortsæt...]
 
-Giv konkrete forslag til kommunikation og oplevelser på hvert trin i rejsen.`,
+**Nøgle-touchpoints:**
+| Tidspunkt | Kanal | Handling | Formål | Budskab |
+|-----------|-------|----------|--------|---------|
+| [Detaljer for hver kritisk touchpoint]
+
+**Anbefalede budskaber:**
+- **E-mail emnelinje:** [Konkret eksempel]
+- **Brevoverskrift:** [Konkret eksempel]
+- **SMS-besked:** [Konkret eksempel]
+
+**Succesmåling:**
+- [KPI 1]: [Hvad og hvorfor]
+- [KPI 2]: [Hvad og hvorfor]
+- [KPI 3]: [Hvad og hvorfor]
+
+---
+💡 **Stewardship-coaching:** [Konkret rådgivning baseret på best practice for denne donortype - hvad virker, hvad skal undgås, og hvor er de største muligheder]
+
+Vær konkret, personlig og baseret på fundraising best practice.`,
+
+  journey: `Generér en detaljeret støtterejse baseret på inputtet.
+
+Format:
+**Støtterejse: [Rejsetype]**
+**Fra:** [Indgangspunkt] → **Til:** [Slutmål] | **Tidshorisont:** [Periode]
+
+**Rejseoverblik:** [2-3 sætninger om strategien og tilgangen]
+
+**Faser og touchpoints:**
+
+🔵 **Fase 1: [Fasenavn]** (Uge/Måned X–Y)
+**Mål:** [Hvad skal opnås i denne fase]
+
+| Tidspunkt | Kanal | Touchpoint | Budskab | Formål |
+|-----------|-------|------------|---------|--------|
+| [Konkrete touchpoints i denne fase]
+
+🟢 **Fase 2: [Fasenavn]** (Uge/Måned X–Y)
+**Mål:** [Hvad skal opnås i denne fase]
+
+[Samme tabelformat]
+
+🟡 **Fase 3: [Fasenavn]** (Uge/Måned X–Y)
+**Mål:** [Hvad skal opnås i denne fase]
+
+[Samme tabelformat]
+
+**Indholdsidéer:**
+- [Konkret indholdsforslag 1]
+- [Konkret indholdsforslag 2]
+- [Konkret indholdsforslag 3]
+
+**Konverteringspunkter:**
+- **Kritisk øjeblik:** [Beskrivelse] → **Facilitering:** [Hvordan]
+- **Kritisk øjeblik:** [Beskrivelse] → **Facilitering:** [Hvordan]
+
+**Succesmåling:**
+- **Fase 1 KPI'er:** [2-3 KPI'er]
+- **Fase 2 KPI'er:** [2-3 KPI'er]
+- **Fase 3 KPI'er:** [2-3 KPI'er]
+
+---
+💡 **Journey-coaching:** [Konkret rådgivning om hvad der virker for denne rejsetype, almindelige faldgruber, og tips til optimering]
+
+Vær konkret, handlingsorienteret og baseret på fundraising best practice.`,
 
   'case-builder': `Du hjælper med at søge fonde og partnerskaber samt bygge overbevisende cases for støtte.
 
