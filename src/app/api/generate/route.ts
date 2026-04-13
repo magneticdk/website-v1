@@ -3,6 +3,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import { createServerClient } from '@/lib/supabase/server'
 import { getSystemPrompt } from '@/lib/ai/prompts'
 import { OrganisationProfile } from '@/types'
+import { AI_MODEL, MAX_OUTPUT_TOKENS, MAX_CHAT_HISTORY, MAX_MESSAGE_LENGTH } from '@/lib/ai/config'
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -52,6 +53,21 @@ export async function POST(request: NextRequest) {
       .eq('user_id', user.id)
       .single<OrganisationProfile>()
 
+    // Rate limit check: max 50 requests per hour
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString()
+    const { count } = await supabase
+      .from('usage_log')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .gte('created_at', oneHourAgo)
+
+    if ((count ?? 0) >= 50) {
+      return NextResponse.json(
+        { error: 'Du har nået din grænse for anmodninger. Prøv igen om en time.' },
+        { status: 429 }
+      )
+    }
+
     // 4. Construct system prompt
     const systemPrompt = getSystemPrompt(tool_slug, profile)
 
@@ -66,6 +82,9 @@ export async function POST(request: NextRequest) {
       finalUserMessage = `${finalUserMessage}\n\nInput data:\n${inputContext}`
     }
 
+    // Sanitize and limit message length
+    finalUserMessage = finalUserMessage.slice(0, MAX_MESSAGE_LENGTH)
+
     if (!finalUserMessage.trim()) {
       return NextResponse.json(
         { error: 'Brugerbesked er påkrævet' },
@@ -78,12 +97,14 @@ export async function POST(request: NextRequest) {
 
     // Add chat history if provided (for conversational tools like Strategy)
     if (chat_history && chat_history.length > 0) {
-      chat_history.forEach((msg) => {
-        messages.push({
-          role: msg.role,
-          content: msg.content,
-        })
-      })
+      const sanitizedHistory = chat_history
+        .slice(-MAX_CHAT_HISTORY)
+        .filter((msg) => msg.role === 'user' || msg.role === 'assistant')
+        .map((msg) => ({
+          role: msg.role as 'user' | 'assistant',
+          content: String(msg.content).slice(0, MAX_MESSAGE_LENGTH),
+        }))
+      messages.push(...sanitizedHistory)
     }
 
     // Add current user message
@@ -93,15 +114,20 @@ export async function POST(request: NextRequest) {
     })
 
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
+      model: AI_MODEL,
+      max_tokens: MAX_OUTPUT_TOKENS,
       system: systemPrompt,
       messages,
     })
 
-    const outputText = response.content[0].type === 'text' 
-      ? response.content[0].text 
-      : ''
+    const firstContent = response.content[0]
+    const outputText = firstContent?.type === 'text' ? firstContent.text : ''
+    if (!outputText) {
+      return NextResponse.json(
+        { error: 'Tomt svar fra AI. Prøv venligst igen.' },
+        { status: 500 }
+      )
+    }
 
     // 7. Log usage to usage_log table
     const tokensUsed = response.usage.input_tokens + response.usage.output_tokens
