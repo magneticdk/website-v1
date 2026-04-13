@@ -261,21 +261,23 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 text-white" style={{ backgroundColor: '#1D3557' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+      <section
+        className="py-24 text-white"
+        style={{ background: 'linear-gradient(135deg, #E87EAC, #4FC9A4, #6B7FD4)' }}
+      >
+        <div className="max-w-[700px] mx-auto px-6 text-center">
+          <h2 className="text-[40px] font-semibold leading-tight mb-6">
             Klar til at skrive bedre fundraising?
-          </h3>
-          <p className="text-xl mb-10" style={{ color: '#F1FAEE' }}>
+          </h2>
+          <p className="text-[18px] mb-10 opacity-90">
             Kom i gang gratis i dag — ingen kreditkort påkrævet
           </p>
           <Link
             href="/signup"
-            className="inline-flex items-center gap-2 px-10 py-4 text-white text-lg font-bold rounded-full transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
-            style={{ backgroundColor: '#E63946' }}
+            className="inline-flex items-center gap-2 px-10 py-4 bg-white text-[#1a1a1a] font-semibold rounded-full transition-opacity hover:opacity-90"
           >
             Kom i gang gratis
-            <ArrowRight className="w-6 h-6" />
+            <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>
