@@ -51,7 +51,7 @@ const tools: ToolConfig[] = [
   },
   {
     slug: 'case-builder',
-    name: 'Søg fonde eller parnetskabe',
+    name: 'Søg fonde eller partnerskabe',
     description: 'Skab en overbevisende sag for støtte',
     icon: 'FileText',
   },
