@@ -6,7 +6,7 @@ import OutputViewer from '@/components/tools/OutputViewer'
 import OutputActions from '@/components/tools/OutputActions'
 import { useOutputs } from '@/hooks/useOutputs'
 
-interface FormData {
+interface FormData extends Record<string, unknown> {
   donor_type: string
   time_period: string
   channels: string[]
