@@ -1,160 +1,63 @@
 import Link from 'next/link'
-import {
-  PenTool,
-  Target,
-  Database,
-  Heart,
-  Map,
-  FileText,
-  Sparkles,
-  Shield,
-  Globe2,
-  Lock,
-  ArrowRight,
-} from 'lucide-react'
+import { PenTool, Target, Database, Heart, Map, FileText, ArrowRight, UserPlus, Settings2, Sparkles, Play } from 'lucide-react'
 
 const tools = [
-  {
-    icon: PenTool,
-    name: 'Fundraising Tekstforfatter',
-    description: 'Skriv appeller, e-mails og breve der virker',
-  },
-  {
-    icon: Target,
-    name: 'Strategi Arkitekt',
-    description: 'Byg en evidensbaseret fundraising-strategi',
-  },
-  {
-    icon: Database,
-    name: 'Datarensning & Formatering',
-    description: 'Rens og formater donor- og medlemsdata',
-  },
-  {
-    icon: Heart,
-    name: 'Arv og Testamente',
-    description: 'Start og udvikle et arvsprogram',
-  },
-  {
-    icon: Map,
-    name: 'Støtterrejse Designer',
-    description: 'Kortlæg og forbedr støtteres rejser',
-  },
-  {
-    icon: FileText,
-    name: 'Søg fonde eller partnerskabe',
-    description: 'Skab overbevisende cases for støtte',
-  },
+  { icon: PenTool, name: 'Fundraising Tekstforfatter', description: 'Skriv appeller, e-mails og breve der virker' },
+  { icon: Target, name: 'Strategi Arkitekt', description: 'Byg en evidensbaseret fundraising-strategi' },
+  { icon: Database, name: 'Datarensning & Formatering', description: 'Rens og formater donor- og medlemsdata' },
+  { icon: Heart, name: 'Stewardship Planner', description: 'Design en plan for donorpleje og tak' },
+  { icon: Map, name: 'Støtterejse Designer', description: 'Kortlæg rejsen fra første gave til loyal ambassadør' },
+  { icon: FileText, name: 'Case for Support Builder', description: 'Skab en overbevisende sag for støtte' },
 ]
 
 const steps = [
-  {
-    number: '1',
-    title: 'Opret din profil',
-    description: 'Fortæl os om din organisation, og vores AI lærer jeres stemme og kontekst',
-  },
-  {
-    number: '2',
-    title: 'Vælg et værktøj',
-    description: 'Seks specialiserede AI-værktøjer til fundraising, strategi og data',
-  },
-  {
-    number: '3',
-    title: 'Generér og forfin',
-    description: 'Få professionelt output på sekunder, tilpas det, og gem det i dit bibliotek',
-  },
+  { icon: UserPlus, title: 'Opret din profil', description: 'Fortæl os om jeres organisation, mission og kommunikationsstil.' },
+  { icon: Settings2, title: 'Vælg et værktøj', description: 'Vælg det AI-værktøj der passer til din aktuelle opgave.' },
+  { icon: Sparkles, title: 'Generér og forfin', description: 'Få professionelt output tilpasset jeres organisation på sekunder.' },
 ]
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F5F7FA]">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-[#E8E8E4]">
-        <div className="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
-          <img src="/magnetic-logo.svg" alt="Magnetic" width={140} height={36} />
-          <div className="flex items-center gap-6">
-            <Link href="/login" className="text-[#6b6b6b] hover:text-[#1a1a1a] transition-colors font-medium text-sm">
-              Log ind
-            </Link>
-            <Link
-              href="/signup"
-              className="px-5 py-2.5 text-white text-sm font-medium rounded-full transition-opacity hover:opacity-90"
-              style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
-            >
-              Kom i gang
-            </Link>
+    <div className="min-h-screen bg-white">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <img src="/magnetic-logo.svg" alt="Magnetic" width={120} height={32} />
+          <div className="flex items-center gap-4">
+            <Link href="/login" className="text-sm text-[#555] hover:text-[#1a1a1a] transition-colors">Log ind</Link>
+            <Link href="/signup" className="text-sm text-white font-medium px-5 py-2 rounded-full transition-opacity hover:opacity-90" style={{ backgroundColor: '#D946A8' }}>Kom i gang gratis</Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative bg-white overflow-hidden" style={{ minHeight: '580px' }}>
-        <img
-          src="/hero-bg.png"
-          alt=""
-          aria-hidden="true"
-          className="absolute top-0 right-0 h-full pointer-events-none select-none"
-          style={{ width: '50%', objectFit: 'cover', objectPosition: 'left center', zIndex: 0 }}
-        />
-        <div className="relative w-full max-w-[1200px] mx-auto px-6 py-28" style={{ zIndex: 1 }}>
-          <div className="max-w-[560px]">
-            <span className="inline-block border border-[#E8E8E4] text-[#6b6b6b] text-xs font-medium px-4 py-1.5 rounded-full mb-6">
-              AI-drevet fundraising
-            </span>
-            <h1 className="text-[34px] md:text-[52px] leading-[1.1] font-semibold text-[#1a1a1a] mb-6">
-              AI-drevet værktøjskasse for danske fundraisere
-            </h1>
-            <p className="text-[18px] text-[#6b6b6b] leading-relaxed mb-8 max-w-[460px]">
-              Skriv bedre appeller, byg stærkere strategier og forstå dine støtter — med AI der kender din organisation
-            </p>
-            <div className="flex items-center gap-4 flex-wrap">
-              <Link
-                href="/signup"
-                className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-full transition-opacity hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
-              >
-                Kom i gang gratis
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link href="/login" className="text-sm text-[#6b6b6b] hover:text-[#1a1a1a] transition-colors hover:underline underline-offset-2">
-                Log ind →
-              </Link>
-            </div>
-            <p className="text-xs text-[#6b6b6b] mt-4">Ingen kreditkort påkrævet</p>
+      <section className="relative pt-16 overflow-hidden">
+        <img src="/hero-bg.png" alt="" aria-hidden="true" className="absolute top-0 right-0 w-[400px] h-[400px] object-contain pointer-events-none select-none opacity-80" style={{ zIndex: 0 }} />
+        <div className="relative max-w-3xl mx-auto px-6 pt-20 pb-24 text-center" style={{ zIndex: 1 }}>
+          <h1 className="text-4xl md:text-[56px] font-bold text-[#1a1a1a] leading-[1.1] mb-6">Din AI-drevet fundraising værktøjskasse</h1>
+          <p className="text-[#666] text-lg mb-10 max-w-xl mx-auto leading-relaxed">Få adgang til den samme kvalitet af strategisk tænkning og kreativt output, som større velgørenhedsorganisationer får fra bureauer og konsulenter.</p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Link href="/signup" className="inline-flex items-center gap-2 text-white font-medium px-7 py-3 rounded-full transition-opacity hover:opacity-90" style={{ backgroundColor: '#D946A8' }}>Kom i gang gratis<ArrowRight className="w-4 h-4" /></Link>
+            <Link href="/login" className="inline-flex items-center px-7 py-3 rounded-full border border-[#ddd] text-[#333] font-medium text-sm hover:bg-gray-50 transition-colors">Log ind</Link>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-[#F7F7F5]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
-              Seks værktøjer til hele fundraising-rejsen
-            </h2>
-            <p className="text-[18px] text-[#6b6b6b]">
-              Fra strategi til tekst, fra data til donorpleje
-            </p>
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-[#1a1a1a] mb-3">Dine værktøjer</h2>
+            <p className="text-[#666] text-base">Seks specialiserede AI-værktøjer der dækker hele din fundraising-rejse.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {tools.map((tool, index) => {
               const Icon = tool.icon
               return (
-                <div
-                  key={index}
-                  className="bg-white border border-[#E8E8E4] rounded-2xl p-7 transition-shadow duration-200 hover:shadow-lg cursor-default"
-                >
-                  <div
-                    className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-5"
-                    style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
-                  >
-                    <Icon className="w-5 h-5 text-white" />
+                <div key={index} className="bg-[#FAFAFA] border border-[#F0F0F0] rounded-2xl p-6 hover:shadow-md transition-all duration-200 hover:border-[#e0e0e0]">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: '#FDE8F4' }}>
+                    <Icon className="w-5 h-5" style={{ color: '#D946A8' }} />
                   </div>
-                  <h3 className="text-[16px] font-semibold text-[#1a1a1a] mb-2">
-                    {tool.name}
-                  </h3>
-                  <p className="text-[14px] text-[#6b6b6b] leading-relaxed">
-                    {tool.description}
-                  </p>
+                  <h3 className="text-[15px] font-semibold text-[#1a1a1a] mb-1.5">{tool.name}</h3>
+                  <p className="text-sm text-[#888] leading-relaxed">{tool.description}</p>
                 </div>
               )
             })}
@@ -163,135 +66,66 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
-              Sådan virker det
-            </h2>
-            <p className="text-[18px] text-[#6b6b6b]">
-              Tre enkle trin til bedre fundraising
-            </p>
-          </div>
+      <section className="py-20 bg-[#F7F7F5]">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-[#1a1a1a] text-center mb-14">Sådan virker det</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {steps.map((step, index) => (
-              <div key={index} className="flex flex-col">
-                <span
-                  className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full w-fit mb-4"
-                  style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
-                >
-                  Trin {step.number}
-                </span>
-                <h3 className="text-[20px] font-semibold text-[#1a1a1a] mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-[15px] text-[#6b6b6b] leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
+            {steps.map((step, index) => {
+              const Icon = step.icon
+              return (
+                <div key={index} className="text-center">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: '#FDE8F4' }}>
+                    <Icon className="w-6 h-6" style={{ color: '#D946A8' }} />
+                  </div>
+                  <h3 className="text-base font-semibold text-[#1a1a1a] mb-2">{step.title}</h3>
+                  <p className="text-sm text-[#888] leading-relaxed">{step.description}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
       {/* Video Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[800px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
-              Se hvordan det virker
-            </h2>
-            <p className="text-[18px] text-[#6b6b6b]">
-              En hurtig introduktion til Magnetic Fundraising Toolkit
-            </p>
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#1a1a1a] mb-3">Se hvordan det virker</h2>
+            <p className="text-[#666] text-base max-w-lg mx-auto">Se en kort video om hvordan Magnetic Fundraising Toolkit kan hjælpe jeres organisation.</p>
           </div>
-          <div className="aspect-video bg-[#F7F7F5] border-2 border-dashed border-[#E8E8E4] rounded-2xl flex flex-col items-center justify-center gap-4">
-            <div
-              className="w-16 h-16 rounded-full flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
-            >
-              <svg className="w-7 h-7 fill-white ml-1" viewBox="0 0 24 24" aria-hidden="true">
-                <polygon points="5,3 19,12 5,21" />
-              </svg>
+          <div className="aspect-video rounded-3xl flex flex-col items-center justify-center gap-3 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5E6F0, #EDE4F0, #E8E0F0)' }}>
+            <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg" style={{ backgroundColor: '#D946A8' }}>
+              <Play className="w-7 h-7 text-white fill-white ml-0.5" />
             </div>
-            <p className="text-[#6b6b6b] text-sm">Video kommer snart</p>
+            <p className="text-[#888] text-sm">Klik for at afspille</p>
           </div>
         </div>
       </section>
-
-      {/* Trust Section */}
-      <section className="py-24 bg-[#F7F7F5]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
-              Bygget til danske velgørende organisationer
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
-                <Shield className="w-5 h-5 text-[#6B7FD4]" />
-              </div>
-              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">GDPR-venlig</h3>
-              <p className="text-[14px] text-[#6b6b6b]">Fuld overholdelse af danske databeskyttelsesregler</p>
+      <footer className="bg-[#F7F7F5] border-t border-[#EBEBEB] pt-14 pb-8">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div>
+              <h4 className="font-bold text-[#1a1a1a] text-sm mb-3">Magnetic Toolkit</h4>
+              <p className="text-sm text-[#888] leading-relaxed">AI-drevet fundraising værktøjer til danske velgørenhedsorganisationer.</p>
             </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
-                <Globe2 className="w-5 h-5 text-[#6B7FD4]" />
-              </div>
-              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">Dansk sprog og kontekst</h3>
-              <p className="text-[14px] text-[#6b6b6b]">AI der forstår dansk fundraising-kultur og terminologi</p>
+            <div>
+              <h4 className="font-bold text-[#1a1a1a] text-sm mb-3">Links</h4>
+              <ul className="space-y-2">
+                <li><Link href="/" className="text-sm text-[#888] hover:text-[#1a1a1a] transition-colors">Forside</Link></li>
+                <li><Link href="/login" className="text-sm text-[#888] hover:text-[#1a1a1a] transition-colors">Log ind</Link></li>
+                <li><Link href="/signup" className="text-sm text-[#888] hover:text-[#1a1a1a] transition-colors">Opret konto</Link></li>
+              </ul>
             </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
-                <Sparkles className="w-5 h-5 text-[#6B7FD4]" />
-              </div>
-              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">Anthropic Claude AI</h3>
-              <p className="text-[14px] text-[#6b6b6b]">Drevet af verdens mest avancerede AI-teknologi</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
-                <Lock className="w-5 h-5 text-[#6B7FD4]" />
-              </div>
-              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">Dine data er dine egne</h3>
-              <p className="text-[14px] text-[#6b6b6b]">Vi deler aldrig dine data med tredjeparter</p>
+            <div>
+              <h4 className="font-bold text-[#1a1a1a] text-sm mb-3">Juridisk</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-sm text-[#888] hover:text-[#1a1a1a] transition-colors">Privatlivspolitik</a></li>
+                <li><a href="#" className="text-sm text-[#888] hover:text-[#1a1a1a] transition-colors">Vilkår og betingelser</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section
-        className="py-24 text-white"
-        style={{ background: 'linear-gradient(135deg, #E87EAC, #4FC9A4, #6B7FD4)' }}
-      >
-        <div className="max-w-[700px] mx-auto px-6 text-center">
-          <h2 className="text-[40px] font-semibold leading-tight mb-6">
-            Klar til at skrive bedre fundraising?
-          </h2>
-          <p className="text-[18px] mb-10 opacity-90">
-            Kom i gang gratis i dag — ingen kreditkort påkrævet
-          </p>
-          <Link
-            href="/signup"
-            className="inline-flex items-center gap-2 px-10 py-4 bg-white text-[#1a1a1a] font-semibold rounded-full transition-opacity hover:opacity-90"
-          >
-            Kom i gang gratis
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-10" style={{ backgroundColor: '#F1FAEE' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-sm text-gray-600">
-            <p>
-              Magnetic Fundraising Toolkit © 2026 · 
-              <a href="#" className="hover:text-[#E63946] mx-1 transition-colors">Privatlivspolitik</a> · 
-              <a href="#" className="hover:text-[#E63946] mx-1 transition-colors">Vilkår</a> · 
-              <a href="#" className="hover:text-[#E63946] mx-1 transition-colors">Kontakt</a>
-            </p>
+          <div className="border-t border-[#EBEBEB] pt-6 text-center">
+            <p className="text-xs text-[#aaa]">© 2026 Magnetic Fundraising Toolkit. Drevet af AI.</p>
           </div>
         </div>
       </footer>
