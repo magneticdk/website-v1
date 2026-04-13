@@ -68,27 +68,20 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F5F7FA]">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <h1 className="text-3xl font-bold" style={{ color: '#E63946' }}>Magnetic</h1>
-            </div>
-            <div className="flex items-center gap-6">
-              <Link
-                href="/login"
-                className="text-gray-700 hover:text-[#E63946] transition-colors font-medium"
-              >
-                Log ind
-              </Link>
-              <Link
-                href="/signup"
-                className="px-6 py-3 text-white rounded-full font-semibold transition-colors shadow-md hover:shadow-lg"
-                style={{ backgroundColor: '#E63946' }}
-              >
-                Kom i gang
-              </Link>
-            </div>
+      <nav className="sticky top-0 z-50 bg-white border-b border-[#E8E8E4]">
+        <div className="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+          <img src="/magnetic-logo.svg" alt="Magnetic" width={140} height={36} />
+          <div className="flex items-center gap-6">
+            <Link href="/login" className="text-[#6b6b6b] hover:text-[#1a1a1a] transition-colors font-medium text-sm">
+              Log ind
+            </Link>
+            <Link
+              href="/signup"
+              className="px-5 py-2.5 text-white text-sm font-medium rounded-full transition-opacity hover:opacity-90"
+              style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
+            >
+              Kom i gang
+            </Link>
           </div>
         </div>
       </nav>
