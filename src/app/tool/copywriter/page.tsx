@@ -6,7 +6,7 @@ import OutputViewer from '@/components/tools/OutputViewer'
 import OutputActions from '@/components/tools/OutputActions'
 import { useOutputs } from '@/hooks/useOutputs'
 
-interface FormData {
+interface FormData extends Record<string, unknown> {
   content_type: string
   audience: string
   campaign_name: string

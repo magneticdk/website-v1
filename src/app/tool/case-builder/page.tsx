@@ -8,7 +8,7 @@ import OutputActions from '@/components/tools/OutputActions'
 import { useOutputs } from '@/hooks/useOutputs'
 import { useProfile } from '@/hooks/useProfile'
 
-interface CaseFormData {
+interface CaseFormData extends Record<string, unknown> {
   // Step 1
   problem: string
   affected: string
