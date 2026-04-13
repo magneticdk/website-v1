@@ -8,8 +8,22 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Magnetic Fundraising Toolkit',
-  description: 'AI-powered fundraising toolkit for Danish charities',
+  title: 'Magnetic Fundraising Toolkit — AI for danske fundraisere',
+  description: 'AI-drevet værktøjskasse til danske fundraisere. Skriv bedre appeller, byg stærkere strategier og forstå dine støtter med AI der kender din organisation.',
+  keywords: 'fundraising, AI, dansk, velgørende, donation, strategi, appeller, nonprofit',
+  authors: [{ name: 'Magnetic Consulting' }],
+  openGraph: {
+    title: 'Magnetic Fundraising Toolkit — AI for danske fundraisere',
+    description: 'AI-drevet værktøjskasse til danske fundraisere. Skriv bedre appeller, byg stærkere strategier og forstå dine støtter.',
+    type: 'website',
+    locale: 'da_DK',
+    siteName: 'Magnetic Fundraising Toolkit',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Magnetic Fundraising Toolkit — AI for danske fundraisere',
+    description: 'AI-drevet værktøjskasse til danske fundraisere.',
+  },
 }
 
 export default function RootLayout({
