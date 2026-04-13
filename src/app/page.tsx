@@ -125,32 +125,36 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-[#F7F7F5]">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-[#333333] mb-4">
+            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
               Seks værktøjer til hele fundraising-rejsen
-            </h3>
-            <p className="text-xl text-[#718096]">
+            </h2>
+            <p className="text-[18px] text-[#6b6b6b]">
               Fra strategi til tekst, fra data til donorpleje
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {tools.map((tool, index) => {
               const Icon = tool.icon
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
+                  className="bg-white border border-[#E8E8E4] rounded-2xl p-7 transition-shadow duration-200 hover:shadow-lg cursor-default"
                 >
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-[#1B4F72]" />
+                  <div
+                    className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-5"
+                    style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
+                  >
+                    <Icon className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#333333] mb-2">
+                  <h3 className="text-[16px] font-semibold text-[#1a1a1a] mb-2">
                     {tool.name}
-                  </h4>
-                  <p className="text-[#718096]">{tool.description}</p>
+                  </h3>
+                  <p className="text-[14px] text-[#6b6b6b] leading-relaxed">
+                    {tool.description}
+                  </p>
                 </div>
               )
             })}
