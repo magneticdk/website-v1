@@ -187,25 +187,26 @@ export default function Home() {
       </section>
 
       {/* Video Section */}
-      <section className="py-20 bg-[#F5F7FA]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white">
+        <div className="max-w-[800px] mx-auto px-6">
           <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-[#333333] mb-4">
+            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
               Se hvordan det virker
-            </h3>
-            <p className="text-xl text-[#718096]">
+            </h2>
+            <p className="text-[18px] text-[#6b6b6b]">
               En hurtig introduktion til Magnetic Fundraising Toolkit
             </p>
           </div>
-
-          <div className="aspect-video bg-white rounded-lg shadow-lg overflow-hidden">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Magnetic Fundraising Toolkit introduktion"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          <div className="aspect-video bg-[#F7F7F5] border-2 border-dashed border-[#E8E8E4] rounded-2xl flex flex-col items-center justify-center gap-4">
+            <div
+              className="w-16 h-16 rounded-full flex items-center justify-center"
+              style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
+            >
+              <svg className="w-7 h-7 fill-white ml-1" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
+            </div>
+            <p className="text-[#6b6b6b] text-sm">Video kommer snart</p>
           </div>
         </div>
       </section>
