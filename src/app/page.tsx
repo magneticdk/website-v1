@@ -164,26 +164,30 @@ export default function Home() {
 
       {/* How It Works Section */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1D3557' }}>
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
               Sådan virker det
-            </h3>
-            <p className="text-xl text-gray-600">
+            </h2>
+            <p className="text-[18px] text-[#6b6b6b]">
               Tre enkle trin til bedre fundraising
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {steps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-20 h-20 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg" style={{ backgroundColor: '#E63946' }}>
-                  {step.number}
-                </div>
-                <h4 className="text-2xl font-bold mb-4" style={{ color: '#1D3557' }}>
+              <div key={index} className="flex flex-col">
+                <span
+                  className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full w-fit mb-4"
+                  style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
+                >
+                  Trin {step.number}
+                </span>
+                <h3 className="text-[20px] font-semibold text-[#1a1a1a] mb-3">
                   {step.title}
-                </h4>
-                <p className="text-gray-600 text-lg leading-relaxed">{step.description}</p>
+                </h3>
+                <p className="text-[15px] text-[#6b6b6b] leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
