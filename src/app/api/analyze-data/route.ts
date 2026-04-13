@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createServerClient } from '@/lib/supabase/server'
+import { AI_MODEL, MAX_OUTPUT_TOKENS, MAX_SAMPLE_ROWS, MAX_HEADERS, MAX_ADDITIONAL_INSTRUCTIONS_LENGTH } from '@/lib/ai/config'
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -51,9 +52,38 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    if (headers.length > MAX_HEADERS) {
+      return NextResponse.json(
+        { error: 'For mange kolonner i datasættet (max 100).' },
+        { status: 400 }
+      )
+    }
+
+    if (additionalInstructions && additionalInstructions.length > MAX_ADDITIONAL_INSTRUCTIONS_LENGTH) {
+      return NextResponse.json(
+        { error: `Yderligere instruktioner må maks være ${MAX_ADDITIONAL_INSTRUCTIONS_LENGTH} tegn.` },
+        { status: 400 }
+      )
+    }
+
+    // Rate limit check: max 50 requests per hour
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString()
+    const { count } = await supabase
+      .from('usage_log')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .gte('created_at', oneHourAgo)
+
+    if ((count ?? 0) >= 50) {
+      return NextResponse.json(
+        { error: 'Du har nået din grænse for anmodninger. Prøv igen om en time.' },
+        { status: 429 }
+      )
+    }
+
     // 3. Construct analysis prompt
     const tasksDescription = tasks.join('\n- ')
-    const sampleData = sampleRows.slice(0, 100).map((row, index) => {
+    const sampleData = sampleRows.slice(0, MAX_SAMPLE_ROWS).map((row, index) => {
       return `Række ${index + 1}: ${row.join(' | ')}`
     }).join('\n')
 
@@ -64,9 +94,11 @@ export async function POST(request: NextRequest) {
 **Opgaver:**
 - ${tasksDescription}
 
-${additionalInstructions ? `**Yderligere instruktioner:** ${additionalInstructions}` : ''}
+${additionalInstructions
+  ? `**Yderligere instruktioner:** ${String(additionalInstructions).replace(/[\x00-\x1F\x7F]/g, '').slice(0, MAX_ADDITIONAL_INSTRUCTIONS_LENGTH)}`
+  : ''}
 
-**Dataeksempel (første ${Math.min(100, sampleRows.length)} rækker):**
+**Dataeksempel (første ${Math.min(MAX_SAMPLE_ROWS, sampleRows.length)} rækker):**
 ${sampleData}
 
 Find alle problemer i datasættet baseret på opgaverne. For hvert problem, returnér JSON i dette format:
@@ -85,8 +117,8 @@ Vær grundig men realistisk. Fokuser på de mest kritiske problemer først. Retu
 
     // 4. Call Anthropic Claude API
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
+      model: AI_MODEL,
+      max_tokens: MAX_OUTPUT_TOKENS,
       system: `Du er en dataoperations specialist specialiseret i nonprofit-data (donorer, medlemmer, kontakter). 
 
 Du analyserer datasæt og identificerer problemer som:
@@ -107,26 +139,37 @@ Vær præcis, struktureret og konkret i dine anbefalinger. Alle output skal vær
       ],
     })
 
-    const outputText = response.content[0].type === 'text' 
-      ? response.content[0].text 
-      : ''
+    const firstContent = response.content[0]
+    const outputText = firstContent?.type === 'text' ? firstContent.text : ''
+    if (!outputText) {
+      return NextResponse.json(
+        { error: 'Tomt svar fra AI. Prøv venligst igen.' },
+        { status: 500 }
+      )
+    }
 
     // 5. Parse JSON from Claude's response
     let issues: DataIssue[] = []
     try {
-      // Extract JSON from response (Claude might wrap it in markdown)
-      const jsonMatch = outputText.match(/\[[\s\S]*\]/)
+      const cleaned = outputText
+        .replace(/```json\n?/g, '')
+        .replace(/```\n?/g, '')
+        .trim()
+      const jsonMatch = cleaned.match(/\[[\s\S]*\]/)
       if (jsonMatch) {
-        issues = JSON.parse(jsonMatch[0])
-      } else {
-        throw new Error('Kunne ikke finde JSON i svar')
+        const parsed = JSON.parse(jsonMatch[0])
+        if (Array.isArray(parsed)) {
+          issues = parsed
+        }
       }
     } catch (parseError) {
-      console.error('Failed to parse JSON:', outputText)
-      return NextResponse.json(
-        { error: 'Kunne ikke parse AI-svar. Prøv venligst igen.' },
-        { status: 500 }
-      )
+      console.error('Failed to parse JSON from AI response:', parseError)
+      // Return empty issues rather than a 500 — the data was analyzed, just not parseable
+      return NextResponse.json({
+        issues: [],
+        summary: { total: 0, critical: 0, warnings: 0, suggestions: 0 },
+        warning: 'AI-svaret kunne ikke parses. Prøv venligst igen.',
+      })
     }
 
     // 6. Log usage
