@@ -1,6 +1,16 @@
 import { OrganisationProfile } from '@/types'
 
 /**
+ * Sanitize profile field values to prevent injection and limit length
+ */
+function sanitizeProfileField(value: string | null | undefined): string {
+  if (!value) return 'Ikke angivet'
+  return String(value)
+    .slice(0, 2000)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // strip control chars
+}
+
+/**
  * Base system prompt for all AI tools
  * Combines Danish fundraising expertise with organisation context
  */
@@ -8,13 +18,13 @@ export function getBaseSystemPrompt(profile: OrganisationProfile | null): string
   const orgContext = profile
     ? `
 Her er konteksten om den organisation du hjælper:
-Navn: ${profile.name || 'Ikke angivet'}
-Mission: ${profile.mission || 'Ikke angivet'}
-Programmer: ${profile.programs || 'Ikke angivet'}
-Målgruppe: ${profile.target_audience || 'Ikke angivet'}
-Kommunikationsstil: ${profile.brand_voice || 'Ikke angivet'}
-Nøglebudskaber: ${profile.key_messages || 'Ikke angivet'}
-Årlig indtægt: ${profile.annual_income || 'Ikke angivet'}
+Navn: ${sanitizeProfileField(profile.name)}
+Mission: ${sanitizeProfileField(profile.mission)}
+Programmer: ${sanitizeProfileField(profile.programs)}
+Målgruppe: ${sanitizeProfileField(profile.target_audience)}
+Kommunikationsstil: ${sanitizeProfileField(profile.brand_voice)}
+Nøglebudskaber: ${sanitizeProfileField(profile.key_messages)}
+Årlig indtægt: ${sanitizeProfileField(profile.annual_income)}
 
 Brug denne kontekst til at sikre at alt output matcher organisationens stemme og værdier.`
     : 'Organisationsprofil ikke tilgængelig endnu.'
