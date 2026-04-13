@@ -8,7 +8,7 @@ import OutputActions from '@/components/tools/OutputActions'
 import { useOutputs } from '@/hooks/useOutputs'
 import { useProfile } from '@/hooks/useProfile'
 
-interface FormData {
+interface CaseFormData {
   // Step 1
   problem: string
   affected: string
@@ -35,7 +35,7 @@ export default function CaseBuilderPage() {
   const { profile } = useProfile()
   const { saveOutput } = useOutputs()
   const [currentStep, setCurrentStep] = useState(1)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<CaseFormData>({
     problem: '',
     affected: '',
     problem_scale: '',
@@ -57,7 +57,7 @@ export default function CaseBuilderPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const updateFormData = (field: keyof FormData, value: string) => {
+  const updateFormData = (field: keyof CaseFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
