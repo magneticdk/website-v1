@@ -87,23 +87,39 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="text-white py-24 md:py-40" style={{ backgroundColor: '#1D3557' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+      <section className="relative bg-white overflow-hidden" style={{ minHeight: '580px' }}>
+        <img
+          src="/hero-bg.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-0 right-0 h-full pointer-events-none select-none"
+          style={{ width: '50%', objectFit: 'cover', objectPosition: 'left center', zIndex: 0 }}
+        />
+        <div className="relative w-full max-w-[1200px] mx-auto px-6 py-28" style={{ zIndex: 1 }}>
+          <div className="max-w-[560px]">
+            <span className="inline-block border border-[#E8E8E4] text-[#6b6b6b] text-xs font-medium px-4 py-1.5 rounded-full mb-6">
+              AI-drevet fundraising
+            </span>
+            <h1 className="text-[34px] md:text-[52px] leading-[1.1] font-semibold text-[#1a1a1a] mb-6">
               AI-drevet værktøjskasse for danske fundraisere
-            </h2>
-            <p className="text-xl md:text-2xl mb-10 leading-relaxed" style={{ color: '#F1FAEE' }}>
+            </h1>
+            <p className="text-[18px] text-[#6b6b6b] leading-relaxed mb-8 max-w-[460px]">
               Skriv bedre appeller, byg stærkere strategier og forstå dine støtter — med AI der kender din organisation
             </p>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-2 px-10 py-4 text-white text-lg font-bold rounded-full transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
-              style={{ backgroundColor: '#E63946' }}
-            >
-              Kom i gang gratis
-              <ArrowRight className="w-6 h-6" />
-            </Link>
+            <div className="flex items-center gap-4 flex-wrap">
+              <Link
+                href="/signup"
+                className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-full transition-opacity hover:opacity-90"
+                style={{ background: 'linear-gradient(135deg, #E87EAC, #6B7FD4)' }}
+              >
+                Kom i gang gratis
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link href="/login" className="text-sm text-[#6b6b6b] hover:text-[#1a1a1a] transition-colors hover:underline underline-offset-2">
+                Log ind →
+              </Link>
+            </div>
+            <p className="text-xs text-[#6b6b6b] mt-4">Ingen kreditkort påkrævet</p>
           </div>
         </div>
       </section>
