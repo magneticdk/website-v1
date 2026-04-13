@@ -220,53 +220,41 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1D3557' }}>
+      <section className="py-24 bg-[#F7F7F5]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-[36px] font-semibold text-[#1a1a1a] mb-4">
               Bygget til danske velgørende organisationer
-            </h3>
+            </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 shadow-md" style={{ backgroundColor: '#E63946' }}>
-                <Shield className="w-10 h-10 text-white" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
+                <Shield className="w-5 h-5 text-[#6B7FD4]" />
               </div>
-              <h4 className="font-bold text-lg mb-3" style={{ color: '#1D3557' }}>GDPR-venlig</h4>
-              <p className="text-gray-600">
-                Fuld overholdelse af danske databeskyttelsesregler
-              </p>
+              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">GDPR-venlig</h3>
+              <p className="text-[14px] text-[#6b6b6b]">Fuld overholdelse af danske databeskyttelsesregler</p>
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 shadow-md" style={{ backgroundColor: '#E63946' }}>
-                <Globe2 className="w-10 h-10 text-white" />
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
+                <Globe2 className="w-5 h-5 text-[#6B7FD4]" />
               </div>
-              <h4 className="font-bold text-lg mb-3" style={{ color: '#1D3557' }}>Dansk sprog og kontekst</h4>
-              <p className="text-gray-600">
-                AI der forstår dansk fundraising-kultur og terminologi
-              </p>
+              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">Dansk sprog og kontekst</h3>
+              <p className="text-[14px] text-[#6b6b6b]">AI der forstår dansk fundraising-kultur og terminologi</p>
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 shadow-md" style={{ backgroundColor: '#E63946' }}>
-                <Sparkles className="w-10 h-10 text-white" />
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
+                <Sparkles className="w-5 h-5 text-[#6B7FD4]" />
               </div>
-              <h4 className="font-bold text-lg mb-3" style={{ color: '#1D3557' }}>Anthropic Claude AI</h4>
-              <p className="text-gray-600">
-                Drevet af verdens mest avancerede AI-teknologi
-              </p>
+              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">Anthropic Claude AI</h3>
+              <p className="text-[14px] text-[#6b6b6b]">Drevet af verdens mest avancerede AI-teknologi</p>
             </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 shadow-md" style={{ backgroundColor: '#E63946' }}>
-                <Lock className="w-10 h-10 text-white" />
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-white border border-[#E8E8E4] flex items-center justify-center mb-4">
+                <Lock className="w-5 h-5 text-[#6B7FD4]" />
               </div>
-              <h4 className="font-bold text-lg mb-3" style={{ color: '#1D3557' }}>Dine data er dine egne</h4>
-              <p className="text-gray-600">
-                Vi deler aldrig dine data med tredjeparter
-              </p>
+              <h3 className="font-semibold text-[15px] text-[#1a1a1a] mb-2">Dine data er dine egne</h3>
+              <p className="text-[14px] text-[#6b6b6b]">Vi deler aldrig dine data med tredjeparter</p>
             </div>
           </div>
         </div>
